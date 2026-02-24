@@ -27,10 +27,12 @@ export const Card = ({ task, isDone, onToggle, onUpdateGoal, onDelete, day }: Ca
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('taskId', task.id);
     e.dataTransfer.setData('fromDay', day);
-    e.currentTarget.style.opacity = '0.5';
+
+    // Now TypeScript knows e.currentTarget has a .style property
+    (e.currentTarget as HTMLElement).style.opacity = '0.5';
   };
 
-  const handleDragEnd = (e: React.DragEvent) => {
+  const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
     setIsDragging(false);
     e.currentTarget.style.opacity = '1';
   };
@@ -61,8 +63,8 @@ export const Card = ({ task, isDone, onToggle, onUpdateGoal, onDelete, day }: Ca
     }
   };
 
-  const displayCount = task.goal 
-    ? `${task.count}/${task.goal}` 
+  const displayCount = task.goal
+    ? `${task.count}/${task.goal}`
     : `${task.count}x`;
 
   const handleClick = (e: React.MouseEvent) => {
@@ -111,7 +113,7 @@ export const Card = ({ task, isDone, onToggle, onUpdateGoal, onDelete, day }: Ca
               )}
             </div>
           ) : (
-            <div 
+            <div
               className="card-count"
               onClick={(e) => {
                 e.stopPropagation();

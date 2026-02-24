@@ -1,4 +1,4 @@
-import { Task, WeekStatus, TasksByDay, TaskCounts, TaskGoals } from '../types';
+import { WeekStatus, TasksByDay, TaskCounts, TaskGoals } from '../types';
 
 const TASKS_BY_DAY_KEY = 'daily-routine-tasks-by-day';
 const TASK_COUNTS_KEY = 'daily-routine-task-counts';
